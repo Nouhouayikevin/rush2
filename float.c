@@ -69,14 +69,14 @@ Object *sub_float(const Object *this, const Object *other)
     return calcul_float;
 }
 
-bool *eq_float(const Object *this, const Object *other)
+bool eq_float(const Object *this, const Object *other)
 {
     FloatClass *temp = (FloatClass *)this;
     FloatClass *temp2 = (FloatClass *)other;
     return  (temp->x == temp2->x);
 }
 
-bool *gt_float(const Object *this, const Object *other)
+bool gt_float(const Object *this, const Object *other)
 {
     FloatClass *temp = (FloatClass *)this;
     FloatClass *temp2 = (FloatClass *)other;
@@ -84,7 +84,7 @@ bool *gt_float(const Object *this, const Object *other)
 
 }
 
-bool *lt_float(const Object *this, const Object *other)
+bool lt_float(const Object *this, const Object *other)
 {
     FloatClass *temp = (FloatClass *)this;
     FloatClass *temp2 = (FloatClass *)other;

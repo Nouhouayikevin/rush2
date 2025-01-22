@@ -70,7 +70,7 @@ Object *div_Int(const Object *this, const Object *other)
     return calcul_int;
 }
 
-Object *eq_Int(const Object *this, const Object *other)
+bool eq_Int(const Object *this, const Object *other)
 {
     IntClass *temp = (IntClass *)this;
     IntClass *temp2 = (IntClass *)other;
@@ -80,7 +80,7 @@ Object *eq_Int(const Object *this, const Object *other)
         return false;
 }
 
-bool *gt_int(const Object *this, const Object *other)
+bool gt_int(const Object *this, const Object *other)
 {
     IntClass *temp = (IntClass *)this;
     IntClass *temp2 = (IntClass *)other;
@@ -88,7 +88,7 @@ bool *gt_int(const Object *this, const Object *other)
 
 }
 
-bool *lt_int(const Object *this, const Object *other)
+bool lt_int(const Object *this, const Object *other)
 {
     IntClass *temp = (IntClass *)this;
     IntClass *temp2 = (IntClass *)other;

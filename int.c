@@ -76,6 +76,21 @@ Object *eq_Int(const Object *this, const Object *other)
         return false;
 }
 
+bool *gt_int(const Object *this, const Object *other)
+{
+    IntClass *temp = (IntClass *)this;
+    IntClass *temp2 = (IntClass *)other;
+    return  (temp->x > temp2->x);
+
+}
+
+bool *lt_int(const Object *this, const Object *other)
+{
+    IntClass *temp = (IntClass *)this;
+    IntClass *temp2 = (IntClass *)other;
+    return  (temp->x < temp2->x);
+}
+
 // Create additional functions here
 
 static const IntClass _description = {
@@ -90,8 +105,8 @@ static const IntClass _description = {
         .__mul__ = &mul_Int,
         .__div__ = &div_Int,
         .__eq__ = &eq_Int,
-        .__gt__ = NULL,
-        .__lt__ = NULL
+        .__gt__ = &gt_int,
+        .__lt__ = &lt_int
     },
     .x = 0
 };

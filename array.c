@@ -109,7 +109,7 @@ static void     Array_ctor(ArrayClass *this, va_list *args)
     this->_tab = malloc(sizeof(Object *) * this->_size);
     for (size_t i = 0; i < this->_size; i++ ) {
         va_copy(lolo, *args);
-        this->_tab[i] = va_arg(lolo, Object *);
+        this->_tab[i] = va_new(this->_type, &lolo);
         va_end(lolo);
     }
 }
@@ -161,7 +161,7 @@ static void     Array_setitem(ArrayClass *this, ...)
 
     if (index >= this->_size)
         raise("Index of array out of bounds");
-    this->_tab[index] = va_new(Array, &list);
+    this->_tab[index] = va_new(this->_type, &list);
     va_end(list);
 }
 

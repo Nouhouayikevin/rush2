@@ -19,7 +19,7 @@ char *affich_float(Object *c)
     FloatClass *tmp = (FloatClass *)c;
     char *str = malloc(100 * sizeof(char));
     
-    snprintf(str, 100, "<float (%f)>", tmp->x);
+    snprintf(str, 100, "<Float (%f)>", tmp->x);
     return str;
 }
 

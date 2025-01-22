@@ -61,6 +61,7 @@ static Object   *ArrayIterator_getval(ArrayIteratorClass *this)
 static void     ArrayIterator_setval(ArrayIteratorClass *this, ...)
 {
     /* Fill this function for exercice 05 */
+    
 }
 
 static const ArrayIteratorClass   ArrayIteratorDescr = {
@@ -92,6 +93,14 @@ static const Class    *ArrayIterator = (const Class *)&ArrayIteratorDescr;
 static void     Array_ctor(ArrayClass *this, va_list *args)
 {
     /* Fill this function for exercice 05 */
+    this->_size = va_arg(*args, int);
+    this->_type = va_arg(*args, Class *);
+    Object *value = va_arg(*args, Object *);
+
+    this->_tab = malloc(sizeof(Object *) * this->_size);
+    for (int i = 0; i < this->_size; i++ ) {
+        memcpy(this->_tab[i], value, sizeof(Object *));
+    }
 }
 
 static void     Array_dtor(ArrayClass *this)

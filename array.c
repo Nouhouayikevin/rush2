@@ -55,7 +55,7 @@ static Object   *ArrayIterator_getval(ArrayIteratorClass *this)
 {
     if (this->_idx >= this->_array->_size
     || (this->_array->_tab[this->_idx]) == NULL)
-        raise("Out of range");
+        raise("Out of range in get val");
     return (this->_array->_tab[this->_idx]);
 }
 

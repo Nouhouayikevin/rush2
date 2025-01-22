@@ -97,7 +97,7 @@ bool lt_float(const Object *this, const Object *other)
 static const FloatClass _description = {
     {   /* Class struct */
         .__size__ = sizeof(FloatClass),
-        .__name__ = "float",
+        .__name__ = "Float",
         .__ctor__ = (ctor_t)&float_ctor,
         .__dtor__ = (dtor_t)&float_dtor,
         .__str__ = &affich_float,    /* Implement this method for exercice 02 */

@@ -26,7 +26,7 @@ char *affich_float(Object *c)
 
 static void float_ctor(FloatClass *this, va_list *args)
 {
-    this->x = va_arg(*args, double);
+    this->x = va_arg(*args, float);
 }
 
 static void float_dtor(FloatClass *this)

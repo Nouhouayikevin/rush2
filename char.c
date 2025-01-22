@@ -88,7 +88,7 @@ static const CharClass _description = {
         .__sub__ = &sub_Char,    /* Implement this method for exercice 03 */
         .__mul__ = &mul_Char,
         .__div__ = &div_Char,
-        .__eq__ = NULL,
+        .__eq__ = eq_Char,
         .__gt__ = NULL,
         .__lt__ = NULL
     },

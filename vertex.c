@@ -31,7 +31,7 @@ static void Vertex_dtor(VertexClass *this)
 static const VertexClass _description = {
     {   /* Class struct */
         .__size__ = sizeof(VertexClass),
-        .__name__ = "Point",
+        .__name__ = "Vertex",
         .__ctor__ = (ctor_t)&Vertex_ctor,
         .__dtor__ = (dtor_t)&Vertex_dtor,
         .__str__ = NULL,    /* Implement this method for exercice 02 */

@@ -7,6 +7,7 @@
 
 #include "vertex.h"
 #include <stdio.h>
+#include "new.h"
 
 typedef struct
 {
@@ -35,6 +36,22 @@ static void Vertex_dtor(VertexClass *this)
     (void)this;
 }
 
+Object *add_vertex(const Object *this, const Object *other)
+{
+    VertexClass *temp = (VertexClass *)this;
+    VertexClass *temp2 = (VertexClass *)other;
+    Object *calcul_Vertex = new(Vertex, temp->x + temp2->x, temp->y + temp2->y, temp->z + temp2->z);
+    return calcul_Vertex;
+}
+
+Object *sub_vertex(const Object *this, const Object *other)
+{
+    VertexClass *temp = (VertexClass *)this;
+    VertexClass *temp2 = (VertexClass *)other;
+    Object *calcul_Vertex = new(Vertex, temp->x - temp2->x, temp->y - temp2->y, temp->z - temp2->z);
+    return calcul_Vertex;
+}
+
 // Create additional functions here
 
 static const VertexClass _description = {
@@ -44,8 +61,8 @@ static const VertexClass _description = {
         .__ctor__ = (ctor_t)&Vertex_ctor,
         .__dtor__ = (dtor_t)&Vertex_dtor,
         .__str__ = &affich_Vertex,    /* Implement this method for exercice 02 */
-        .__add__ = NULL,    /* Implement this method for exercice 03 */
-        .__sub__ = NULL,    /* Implement this method for exercice 03 */
+        .__add__ = &add_vertex,    /* Implement this method for exercice 03 */
+        .__sub__ = &sub_vertex,    /* Implement this method for exercice 03 */
         .__mul__ = NULL,
         .__div__ = NULL,
         .__eq__ = NULL,

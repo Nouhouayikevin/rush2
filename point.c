@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include "point.h"
+#include "new.h"
 
 typedef struct
 {
@@ -34,6 +35,28 @@ static void Point_dtor(PointClass *this)
     (void)this;
 }
 
+Object * add_point (const Object *this, const Object *other)
+{
+    PointClass *temp = (PointClass *)this;
+    PointClass *temp2 = (PointClass *)other;
+    int a = temp->x + temp2->x;
+    int b = temp->y + temp2->y;
+
+    Object * calcul = new(Point, a, b);
+    return calcul;
+}
+
+Object *sub_Point(const Object *this, const Object *other)
+{
+    PointClass *temp = (PointClass *)this;
+    PointClass *temp2 = (PointClass *)other;
+    int a = temp->x - temp2->x;
+    int b = temp->y - temp2->y;
+
+    Object *calcul = new(Point, a, b);
+    return calcul;
+}
+
 // Create additional functions here
 
 static const PointClass _description = {
@@ -43,8 +66,8 @@ static const PointClass _description = {
         .__ctor__ = (ctor_t)&Point_ctor,
         .__dtor__ = (dtor_t)&Point_dtor,
         .__str__ = &affich_point,    /* Implement this method for exercice 02 */
-        .__add__ = NULL,    /* Implement this method for exercice 03 */
-        .__sub__ = NULL,    /* Implement this method for exercice 03 */
+        .__add__ = &add_point,    /* Implement this method for exercice 03 */
+        .__sub__ = &sub_Point,    /* Implement this method for exercice 03 */
         .__mul__ = NULL,
         .__div__ = NULL,
         .__eq__ = NULL,

@@ -20,7 +20,7 @@ char *affich_Char(Object *c)
     CharClass *tmp = (CharClass *)c;
     char *str = malloc(100 * sizeof(char));
     
-    snprintf(str, 100, "<Char (%d)>", tmp->x);
+    snprintf(str, 100, "<Char (%c)>", tmp->x);
     return str;
 }
 

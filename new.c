@@ -5,13 +5,26 @@
 ** Rush 2
 */
 
+# include "point.h"
+# include "vertex.h"
 #include "new.h"
+
+Object  *va_new(const Class *class, va_list* ap)
+{
+    Object *new_bof = malloc(class->__size__);
+
+    memcpy(new_bof, class, class->__size__);
+    if (class->__ctor__ != NULL) {
+        class->__ctor__(new_bof, ap);
+    }
+    return new_bof;
+}
 
 Object *new(const Class *class, ...)
 {
+    Object *new_bof = malloc(class->__size__);
     va_list list;
     va_start(list, class);
-    Object *new_bof = malloc(class->__size__);
 
     memcpy(new_bof, class, class->__size__);
     if (class->__ctor__ != NULL) {
@@ -20,6 +33,7 @@ Object *new(const Class *class, ...)
     va_end(list);
     return new_bof;
 }
+
 
 void delete(Object *ptr)
 {

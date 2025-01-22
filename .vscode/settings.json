@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "new.h": "c",
-        "player.h": "c"
+        "player.h": "c",
+        "vertex.h": "c",
+        "point.h": "c"
     }
 }

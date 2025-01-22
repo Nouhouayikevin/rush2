@@ -100,9 +100,9 @@ static const FloatClass _description = {
         .__sub__ = &sub_float,    /* Implement this method for exercice 03 */
         .__mul__ = &mul_float,
         .__div__ = &div_float,
-        .__eq__ = NULL,
-        .__gt__ = NULL,
-        .__lt__ = NULL
+        .__eq__ = &eq_float,
+        .__gt__ = &gt_float,
+        .__lt__ = &lt_float
     },
     .x = 0,
 };

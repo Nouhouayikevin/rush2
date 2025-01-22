@@ -53,15 +53,23 @@ static void     ArrayIterator_incr(ArrayIteratorClass *this)
 
 static Object   *ArrayIterator_getval(ArrayIteratorClass *this)
 {
-    if (this->_idx >= this->_array->_size)
+    if (this->_idx >= this->_array->_size
+    || (this->_array->_tab[this->_idx]) == NULL)
         raise("Out of range");
     return (this->_array->_tab[this->_idx]);
 }
 
 static void     ArrayIterator_setval(ArrayIteratorClass *this, ...)
 {
-    (void)this;
-    /* Fill this function for exercice 05 */
+    va_list list;
+    Object * value = va_arg(list, Object *);
+
+    if (this->_array == NULL || this->_array->_tab == NULL)
+        raise("Table is NULL");
+    if (this->_idx >= this->_array->_size)
+        raise("Out of Bounds");
+    
+    this->_array->_tab[this->_idx] = value;
     
 }
 
@@ -149,11 +157,11 @@ static void     Array_setitem(ArrayClass *this, ...)
     va_start(list, this);
 
     size_t index = va_arg(list, size_t);
-    Object *value = va_arg(list, Object *);
+    //Object *value = va_arg(list, Object *);
 
     if (index >= this->_size)
         raise("Index of array out of bounds");
-    this->_tab[index] = value;
+    this->_tab[index] = va_new(Array, &list);
     va_end(list);
 }
 

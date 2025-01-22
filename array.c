@@ -60,6 +60,7 @@ static Object   *ArrayIterator_getval(ArrayIteratorClass *this)
 
 static void     ArrayIterator_setval(ArrayIteratorClass *this, ...)
 {
+    (void)this;
     /* Fill this function for exercice 05 */
     
 }
@@ -95,11 +96,13 @@ static void     Array_ctor(ArrayClass *this, va_list *args)
     /* Fill this function for exercice 05 */
     this->_size = va_arg(*args, int);
     this->_type = va_arg(*args, Class *);
-    Object *value = va_arg(*args, Object *);
+    va_list lolo;
 
     this->_tab = malloc(sizeof(Object *) * this->_size);
-    for (int i = 0; i < this->_size; i++ ) {
-        memcpy(this->_tab[i], value, sizeof(Object *));
+    for (size_t i = 0; i < this->_size; i++ ) {
+        va_copy(lolo, *args);
+        this->_tab[i] = va_arg(lolo, Object *);
+        va_end(lolo);
     }
 }
 
@@ -127,12 +130,31 @@ static Iterator *Array_end(ArrayClass *this)
 
 static Object   *Array_getitem(ArrayClass *this, ...)
 {
-    /* Fill this function for exercice 05 */
+    va_list list;
+
+    va_start(list, this);
+
+    size_t index = va_arg(list, size_t);
+
+    if (index >= this->_size)
+        raise("Index of array out of bounds");
+    va_end(list);
+    return this->_tab[index];
 }
 
 static void     Array_setitem(ArrayClass *this, ...)
 {
-    /* Fill this function for exercice 05 */
+    va_list list;
+
+    va_start(list, this);
+
+    size_t index = va_arg(list, size_t);
+    Object *value = va_arg(list, Object *);
+
+    if (index >= this->_size)
+        raise("Index of array out of bounds");
+    this->_tab[index] = value;
+    va_end(list);
 }
 
 static const ArrayClass   _descr = {

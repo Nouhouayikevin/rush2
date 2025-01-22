@@ -7,6 +7,7 @@
 
 #include "object.h"
 #include "float.h"
+#include "new.h"
 
 typedef struct
 {

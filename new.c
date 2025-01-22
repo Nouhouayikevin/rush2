@@ -43,6 +43,8 @@ void delete(Object *ptr)
 {
     Class *c = (Class *) ptr;
 
+    if (ptr == NULL)
+        return;
     if (c->__dtor__ != NULL) {
         c->__dtor__(c);
     }

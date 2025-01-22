@@ -75,6 +75,20 @@ bool eq_Char(const Object *this, const Object *other)
     return false;
 }
 
+bool lt_Char(const Object *this, const Object *other)
+{
+    CharClass *temp = (CharClass *)this;
+    CharClass *temp2 = (CharClass *)other;
+    return  (temp->x < temp2->x);
+}
+
+bool gt_Char(const Object *this, const Object *other)
+{
+    CharClass *temp = (CharClass *)this;
+    CharClass *temp2 = (CharClass *)other;
+    return  (temp->x > temp2->x);
+}
+
 // Create additional functions here
 
 static const CharClass _description = {
@@ -88,9 +102,9 @@ static const CharClass _description = {
         .__sub__ = &sub_Char,    /* Implement this method for exercice 03 */
         .__mul__ = &mul_Char,
         .__div__ = &div_Char,
-        .__eq__ = eq_Char,
-        .__gt__ = NULL,
-        .__lt__ = NULL
+        .__eq__ = &eq_Char,
+        .__gt__ = &gt_Char,
+        .__lt__ = &lt_Char
     },
     .x = 0
 };

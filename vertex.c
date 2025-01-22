@@ -14,6 +14,15 @@ typedef struct
     int     x, y ,z;
 }   VertexClass;
 
+char *affich_Vertex(Object *c)
+{
+    VertexClass *tmp = (VertexClass *)c;
+    char *str = malloc(100 * sizeof(char));
+    
+    snprintf(str, 100, "<Vertex (%d, %d, %d)>", tmp->x, tmp->y, tmp->z);
+    return str;
+}
+
 static void Vertex_ctor(VertexClass *this, va_list *args)
 {
     this->x = va_arg(*args, int);
@@ -34,7 +43,7 @@ static const VertexClass _description = {
         .__name__ = "Vertex",
         .__ctor__ = (ctor_t)&Vertex_ctor,
         .__dtor__ = (dtor_t)&Vertex_dtor,
-        .__str__ = NULL,    /* Implement this method for exercice 02 */
+        .__str__ = &affich_Vertex,    /* Implement this method for exercice 02 */
         .__add__ = NULL,    /* Implement this method for exercice 03 */
         .__sub__ = NULL,    /* Implement this method for exercice 03 */
         .__mul__ = NULL,

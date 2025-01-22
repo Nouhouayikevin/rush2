@@ -6,11 +6,12 @@
 */
 
 #include "new.h"
+
 Object *new(const Class *class, ...)
 {
     va_list list;
     va_start(list, class);
-    Object *new_bof = malloc(sizeof(class->__size__));
+    Object *new_bof = malloc(class->__size__);
 
     memcpy(new_bof, class, class->__size__);
     if (class->__ctor__ != NULL) {
@@ -18,4 +19,14 @@ Object *new(const Class *class, ...)
     }
     va_end(list);
     return new_bof;
+}
+
+void delete(Object *ptr)
+{
+    Class *c = (Class *) ptr;
+
+    if (c->__dtor__ != NULL) {
+        c->__dtor__(c);
+    }
+    free(c);
 }

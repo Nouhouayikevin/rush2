@@ -89,7 +89,7 @@ static const IntClass _description = {
         .__sub__ = &sub_Int,    /* Implement this method for exercice 03 */
         .__mul__ = &mul_Int,
         .__div__ = &div_Int,
-        .__eq__ = NULL,
+        .__eq__ = &eq_Int,
         .__gt__ = NULL,
         .__lt__ = NULL
     },

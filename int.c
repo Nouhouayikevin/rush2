@@ -62,8 +62,12 @@ Object *div_Int(const Object *this, const Object *other)
 {
     IntClass *temp = (IntClass *)this;
     IntClass *temp2 = (IntClass *)other;
-    Object *calcul_Int = new(Int, temp->x / temp2->x);
-    return calcul_Int;
+    Object *calcul_int = NULL;
+    
+    if (temp2->x == 0)
+        raise("Division per zero\n");
+    calcul_int = new(Int, temp->x / temp2->x);
+    return calcul_int;
 }
 
 Object *eq_Int(const Object *this, const Object *other)

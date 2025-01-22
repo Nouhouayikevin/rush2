@@ -53,7 +53,11 @@ Object *div_float(const Object *this, const Object *other)
 {
     FloatClass *temp = (FloatClass *)this;
     FloatClass *temp2 = (FloatClass *)other;
-    Object *calcul_float = new(Float, temp->x / temp2->x);
+    Object *calcul_float = NULL;
+    
+    if (temp2->x == 0)
+        raise("Division per zero\n");
+    calcul_float = new(Float, temp->x / temp2->x);
     return calcul_float;
 }
 

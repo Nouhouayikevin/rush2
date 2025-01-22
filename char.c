@@ -54,8 +54,12 @@ Object *div_Char(const Object *this, const Object *other)
 {
     CharClass *temp = (CharClass *)this;
     CharClass *temp2 = (CharClass *)other;
-    Object *calcul_Char = new(Char, temp->x / temp2->x);
-    return calcul_Char;
+    Object *calcul_char = NULL;
+    
+    if (temp2->x == 0)
+        raise("Division per zero\n");
+    calcul_char = new(Char, temp->x / temp2->x);
+    return calcul_char;
 }
 
 Object *mul_Char(const Object *this, const Object *other)

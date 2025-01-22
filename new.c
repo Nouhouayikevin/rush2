@@ -11,6 +11,8 @@
 
 Object  *va_new(const Class *class, va_list* ap)
 {
+    if (class == NULL)
+        raise("Class is NULL");
     Object *new_bof = malloc(class->__size__);
 
     memcpy(new_bof, class, class->__size__);
@@ -22,6 +24,8 @@ Object  *va_new(const Class *class, va_list* ap)
 
 Object *new(const Class *class, ...)
 {
+    if (class == NULL)
+        raise("Class is NULL");
     Object *new_bof = malloc(class->__size__);
     va_list list;
     va_start(list, class);

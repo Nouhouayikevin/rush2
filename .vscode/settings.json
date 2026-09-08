@@ -3,7 +3,9 @@
     "new.h": "c",
     "player.h": "c",
     "vertex.h": "c",
-    "point.h": "c"
+    "point.h": "c",
+    "object.h": "c",
+    "string.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
